@@ -1,0 +1,13 @@
+{
+    "name": "@corebyte/database",
+    "version": "1.0.0",
+    "description": "Database module for nodejs/bun",
+    "keywords": ["database", "nodejs", "bun", "json"],
+
+    "author": "CoreByte",
+    "license": "MIT",
+    "homepage": "https://github.com/CoreBytee/Database.json",
+
+    "main": "./src/index.js",
+    "type": "module"
+}

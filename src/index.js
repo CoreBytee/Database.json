@@ -1,4 +1,12 @@
-const FS = require("fs-extra")
+import FS from "fs"
+
+function ReadJson(Path) {
+    return JSON.parse(FS.readFileSync(Path, "utf-8"))
+}
+
+function WriteJson(Path, Data) {
+    return FS.writeFileSync(Path, JSON.stringify(Data, null, 4))
+}
 
 class DataBase {
 
@@ -7,7 +15,7 @@ class DataBase {
         if (!FS.existsSync(Path)) {
             FS.writeFileSync(Path, "{}")
         }
-        this.Data = FS.readJSONSync(Path)
+        this.Data = ReadJson(Path)
     }
 
     GetKey(Key, Default) {
@@ -41,7 +49,7 @@ class DataBase {
             Data = Data[KeyPart]
             Index++
         }
-        FS.writeJSONSync(this.Path, this.Data, {spaces: 4})
+        WriteJson(this.Path, this.Data)
     }
 
     SetKeyIfNotExists(Key, Value) {
@@ -55,4 +63,4 @@ class DataBase {
     }
 }
 
-module.exports = DataBase
+export default DataBase
